@@ -16,3 +16,6 @@ __pycache__/
 .cdsapirc
 *.key
 .env
+
+# Personal assistant context
+CLAUDE.local.md
