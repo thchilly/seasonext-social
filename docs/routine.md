@@ -67,8 +67,8 @@ images and the archive.
 
 ## On the 7th of each month
 
-11. **Monthly forecast check** for the previous month: run
-    `python scripts/fetch_monthly_check.py YYYY-MM` and `python scripts/monthly_check.py YYYY-MM`,
+11. **Forecast vs reality** for the previous month: run
+    `python scripts/fetch_forecast_vs_reality.py YYYY-MM` and `python scripts/forecast_vs_reality.py YYYY-MM`,
     write the text from the template of the previous check, create the draft (status
     *In review*, planned for the second week) and notify the reviewers.
 

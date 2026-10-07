@@ -1,4 +1,4 @@
-"""Monthly forecast check for Crete: what the seasonal forecasts said vs what happened.
+"""Forecast vs reality for Crete: what the seasonal forecasts said vs what happened.
 
 For a target month, compares the C3S seasonal forecasts started one month earlier
 (all contributing systems) with what ERA5 recorded over Crete, for rainfall and
@@ -12,11 +12,11 @@ reference climate:
 - Observed: where the ERA5 value for the target month falls among the ERA5
   1993-2016 values for that calendar month (Crete land points only).
 
-Run fetch_monthly_check.py first.
+Run fetch_forecast_vs_reality.py first.
 
 Usage
 -----
-    python monthly_check.py 2026-09 [--out DIR]
+    python forecast_vs_reality.py 2026-09 [--out DIR]
 """
 
 import argparse
@@ -33,7 +33,7 @@ import brand
 xr.set_options(use_bottleneck=False)
 
 HERE = Path(__file__).resolve().parent
-DATA_DIR = HERE.parent / "cache" / "monthly_check"
+DATA_DIR = HERE.parent / "cache" / "forecast_vs_reality"
 REF = (1993, 2016)
 LABELS = {
     "pr": ("drier than normal", "near normal", "wetter than normal"),
@@ -153,7 +153,7 @@ def draw_panel(fig, rect, key, s, unit, fmt, year, month):
         ax.axvspan(edges[i], edges[i + 1], color=tints[i], alpha=0.06 + 0.42 * probs[i], lw=0)
         mid = 0.5 * (edges[i] + edges[i + 1])
         ax.text(mid, 1.36, f"{probs[i] * 100:.0f}%", ha="center", va="bottom",
-                fontsize=15, fontweight="bold", color=brand.NAVY)
+                fontsize=16, fontweight="semibold", color=brand.NAVY, fontfamily=brand.SERIF)
         ax.text(mid, 1.14, LABELS[key][i], ha="center", va="bottom", fontsize=7.5,
                 color=brand.INK_2)
     for e, v in ((edges[1], o["lo"]), (edges[2], o["hi"])):
@@ -173,7 +173,7 @@ def draw_panel(fig, rect, key, s, unit, fmt, year, month):
         label += f", {'driest' if key == 'pr' else 'coolest'} {mname} of {o['since']}-{year}"
     ha = "right" if x > 0.8 else ("left" if x < 0.2 else "center")
     anchor = {"right": 1.0, "left": 0.0, "center": x}[ha]
-    ax.annotate(label, (anchor, 0.5), xytext=(0, -24),
+    ax.annotate(label, (anchor, 0.5), xytext=(0, -21),
                 textcoords="offset points", ha=ha, va="top", fontsize=9,
                 fontweight="bold", color=brand.NAVY)
 
@@ -230,21 +230,27 @@ def render(year, month, summary, out):
     fig = brand.canvas()
     mname = calendar.month_name[month]
     prev = calendar.month_name[month - 1 if month > 1 else 12]
-    brand.header(
+    top = brand.header(
         fig,
-        "SEASONEXT monthly forecast check",
-        f"{mname} {year} in Crete",
-        f"What the seasonal forecasts said at the start of {prev}, and what\n"
-        f"happened. Grey dots: the {mname}s of 1993-2016, in three equal thirds.",
+        "Forecast vs reality",
+        f"Did the forecasts get {mname} right?",
+        f"Crete, {mname} {year}: seasonal forecasts from early {prev} against what happened. "
+        f"Grey dots: each {mname} of 1993-2016, in three equal thirds.",
     )
+    # Two blocks between the header and the footer. Each block, from its top: serif
+    # heading, verdict line, probabilities, then the band (0.065 high, its top 0.16
+    # below the block top), then the labels under the band.
     specs = [
-        ("pr", "Rainfall", "mm", lambda v: f"{v:.0f}", 0.49),
-        ("t2m", "Temperature", "°C", lambda v: f"{v:.1f}", 0.18),
+        ("pr", "Rainfall", "mm", lambda v: f"{v:.0f}"),
+        ("t2m", "Temperature", "°C", lambda v: f"{v:.1f}"),
     ]
-    for key, title, unit, fmt, y in specs:
-        fig.text(0.06, y + 0.215, title, fontsize=12, fontweight="bold", color=brand.NAVY)
-        fig.text(0.06, y + 0.19, verdict(key, summary[key]), fontsize=8.5, color=brand.INK_2)
-        draw_panel(fig, [0.06, y, 0.88, 0.075], key, summary[key], unit, fmt, year, month)
+    for i, (key, title, unit, fmt) in enumerate(specs):
+        bt = top - 0.02 - i * 0.30
+        fig.text(0.06, bt, title, fontsize=13, fontweight="semibold", color=brand.NAVY,
+                 fontfamily=brand.SERIF, va="top")
+        fig.text(0.06, bt - 0.05, verdict(key, summary[key]), fontsize=8.5, color=brand.INK_2,
+                 va="top")
+        draw_panel(fig, [0.06, bt - 0.225, 0.88, 0.065], key, summary[key], unit, fmt, year, month)
 
     n = summary["pr"]["n_systems"]
     brand.footer(
@@ -278,7 +284,7 @@ def main():
         }
     print(json.dumps(report, indent=2))
 
-    out = Path(args.out) if args.out else DATA_DIR / f"{year}-{month:02d}" / "monthly_check.png"
+    out = Path(args.out) if args.out else DATA_DIR / f"{year}-{month:02d}" / "forecast_vs_reality.png"
     print(render(year, month, summary, out))
 
 

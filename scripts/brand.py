@@ -1,11 +1,15 @@
 """SEASONEXT look for social media figures: colours, fonts, canvas, header, footer.
 
 Every post figure is a 1080 x 1080 px square (works on LinkedIn, X and Bluesky
-feeds) built on the same canvas: a small kicker line, a title, an optional
-subtitle, the content, and a footer with the data credit and the logo.
+feeds) on warm off-white paper, laid out like a journal page:
 
-Brand assets live in brand/: the official logo and emblem (brand/logo/) and
-Barlow (brand/fonts/), a free DIN-style face close to the logo lettering.
+- a masthead: a navy rule, the series name on the left, the logo on the right;
+- a serif title and a short sans-serif subtitle;
+- the content;
+- a compact footer with the data credits.
+
+Typefaces (brand/fonts/): Source Serif 4 for titles and headline numbers, Barlow
+(a DIN-style face close to the logo lettering) for labels, data and credits.
 """
 
 import textwrap
@@ -31,22 +35,24 @@ WARM = "#c0703f"  # dry / warm pole, opposite of BLUE
 WARM_PALE = "#ecd2bf"
 INK_2 = "#4a5262"  # secondary text
 INK_3 = "#8a909c"  # muted text, past-year dots
-RULE = "#dfe3ea"  # hairlines
-PAPER = "#ffffff"
+RULE = "#dcd8cf"  # hairlines, tuned to the paper
+PAPER = "#faf8f3"  # warm off-white
+
+SERIF = "Source Serif 4"
+SANS = "Barlow"
 
 SIZE_PX = 1080
 DPI = 216  # 5 x 5 inch canvas
+LEFT, RIGHT = 0.06, 0.94
 
 
 def setup():
-    """Register the brand font and set matplotlib defaults."""
-    family = "DejaVu Sans"
+    """Register the brand fonts and set matplotlib defaults (sans by default)."""
     for f in sorted((BRAND_DIR / "fonts").glob("*.[ot]tf")):
         font_manager.fontManager.addfont(str(f))
-        family = font_manager.FontProperties(fname=str(f)).get_name()
     plt.rcParams.update(
         {
-            "font.family": family,
+            "font.family": SANS,
             "font.size": 10,
             "text.color": NAVY,
             "axes.edgecolor": RULE,
@@ -61,7 +67,6 @@ def setup():
             "savefig.facecolor": PAPER,
         }
     )
-    return family
 
 
 def canvas():
@@ -70,34 +75,43 @@ def canvas():
     return plt.figure(figsize=(size, size), dpi=DPI)
 
 
-def header(fig, kicker, title, subtitle=None):
-    """Kicker (small caps in brand blue), bold title and an optional subtitle.
+def header(fig, series, title, subtitle=None, wrap=38, size=19, sub_wrap=80):
+    """Masthead (rule, series name, logo), serif title, optional subtitle.
 
-    The title wraps at about 42 characters. Returns the figure y just below the
-    header, so content can start there.
+    Returns the figure y just below the header, so content can start there.
     """
-    lines = textwrap.wrap(title, 42)
-    fig.text(0.06, 0.945, kicker.upper(), color=BLUE, fontsize=8.5,
-             fontweight="semibold", va="top")
-    fig.text(0.06, 0.912, "\n".join(lines), color=NAVY, fontsize=17, fontweight="bold",
-             va="top", linespacing=1.05)
-    y = 0.912 - 0.058 * len(lines)
+    fig.add_artist(plt.Line2D([LEFT, RIGHT], [0.955, 0.955], color=NAVY, lw=1.4))
+    fig.text(LEFT, 0.938, series.upper(), color=BLUE, fontsize=7.5, fontweight="semibold",
+             va="top", fontfamily=SANS)
+    if LOGO.exists():
+        img = plt.imread(str(LOGO))
+        box = OffsetImage(img, zoom=0.16 * SIZE_PX / img.shape[1] / (DPI / 72))
+        fig.add_artist(AnnotationBbox(box, (RIGHT, 0.943), xycoords="figure fraction",
+                                      box_alignment=(1, 1), frameon=False))
+
+    lines = textwrap.wrap(title, wrap)
+    t = fig.text(LEFT, 0.89, "\n".join(lines), color=NAVY, fontsize=size, fontweight="semibold",
+                 va="top", fontfamily=SERIF, linespacing=1.0)
+    y = _bottom(fig, t) - 0.022
     if subtitle:
-        fig.text(0.06, y, subtitle, color=INK_2, fontsize=10, va="top", linespacing=1.2)
-        y -= 0.04 * (subtitle.count("\n") + 1)
+        subtitle = "\n".join(textwrap.wrap(subtitle, sub_wrap)) if "\n" not in subtitle else subtitle
+        t = fig.text(LEFT, y, subtitle, color=INK_2, fontsize=9.5, va="top", linespacing=1.25,
+                     fontfamily=SANS)
+        y = _bottom(fig, t) - 0.01
     return y
 
 
+def _bottom(fig, text):
+    """Figure-fraction y of the lowest point of a text artist, as rendered."""
+    box = text.get_window_extent(renderer=fig.canvas.get_renderer())
+    return box.y0 / fig.bbox.height
+
+
 def footer(fig, credit):
-    """Thin rule, data credit on the left, logo on the right."""
-    fig.add_artist(plt.Line2D([0.06, 0.94], [0.095, 0.095], color=RULE, lw=0.8))
-    fig.text(0.06, 0.075, credit, color=INK_3, fontsize=6, va="top", linespacing=1.25)
-    if LOGO.exists():
-        img = plt.imread(str(LOGO))
-        # About 22 % of the canvas width; OffsetImage scales by dpi / 72.
-        box = OffsetImage(img, zoom=0.22 * SIZE_PX / img.shape[1] / (DPI / 72))
-        fig.add_artist(AnnotationBbox(box, (0.94, 0.048), xycoords="figure fraction",
-                                      box_alignment=(1, 0.5), frameon=False))
+    """Hairline and data credits, set small (keep to two or three short lines)."""
+    fig.add_artist(plt.Line2D([LEFT, RIGHT], [0.078, 0.078], color=RULE, lw=0.8))
+    fig.text(LEFT, 0.066, credit, color=INK_3, fontsize=5.4, va="top", linespacing=1.15,
+             fontfamily=SANS)
 
 
 def save(fig, path):

@@ -83,7 +83,7 @@ Rules that make this work:
 
 | Category | Purpose | When | Data | How it is made |
 |---|---|---|---|---|
-| Monthly forecast check | Show every month how the seasonal forecasts did for Crete | monthly, around the 10th | C3S seasonal forecasts (10 systems), ERA5 | `scripts/monthly_check.py`, fixed figure and text template (section 5) |
+| Forecast vs reality | Show every month how the seasonal forecasts did for Crete | monthly, around the 10th | C3S seasonal forecasts (10 systems), ERA5 | `scripts/forecast_vs_reality.py`, fixed figure and text template (section 5) |
 | Explainer | One concept behind SEASONEXT in plain words | monthly | textbook knowledge, illustrative public data | topic from the backlog (section 9) |
 | Event in context | Put a notable weather or water event in Crete or Greece into numbers | within a week of the event | NOA station totals and records, CLIMADAT-Grid, reservoir data | event figure against station records (section 6) |
 | World day | Join international observances | fixed dates (section 7) | varies | proposed 2 to 4 weeks ahead |
@@ -91,11 +91,11 @@ Rules that make this work:
 | Published work | Team papers, public deliverables, talks | on publication | the publication | `scripts/paper_card.py` |
 | Project life | Workshops, visits, conferences | when they happen | photos | photo and a few lines |
 
-**A typical month.** Week 1: explainer. Week 2: monthly forecast check. Weeks 3 and 4:
+**A typical month.** Week 1: explainer. Week 2: forecast vs reality. Weeks 3 and 4:
 flexible. Priority for flexible slots: our own news (published work, project life), then a
 world day in that week, then events, then field news. A major event can take any slot.
 
-## 5. Monthly forecast check: method
+## 5. Forecast vs reality: method
 
 Question: a month ahead, what did the seasonal forecasts say about Crete, and what happened?
 
@@ -187,9 +187,14 @@ results are published.
 
 ## 10. Figure style
 
-- 1080 × 1080 px square, built on `scripts/brand.py`: kicker, title, subtitle, content,
-  footer with data credit and logo. Navy `#151d2c` and blue `#4d71b1` from the logo;
-  terracotta `#c0703f` as the opposite pole (dry or warm).
+- 1080 × 1080 px square on warm off-white paper, built on `scripts/brand.py`, laid out
+  like a journal page: a masthead (navy rule, series name, logo), a serif title that says
+  what the figure shows, a short subtitle, the content, and a compact footer with the
+  data credits.
+- Typefaces: Source Serif 4 for titles, headings and headline numbers; Barlow (DIN-style,
+  like the logo lettering) for labels, data and credits.
+- Colours: navy `#151d2c` and blue `#4d71b1` from the logo; terracotta `#c0703f` as the
+  opposite pole (dry or warm).
 - One message per figure. Highlight one thing and keep the rest grey. Thin marks, no
   gridlines unless needed. Numbers are written as labels; colour never carries meaning alone.
 - Every rendered image is checked by eye before review (overlaps, clipping, overflow).
@@ -204,7 +209,7 @@ One scheduled run per day at 08:00 Athens time, in the cloud (instructions in
   a brief check for major events and releases.
 - **Mondays:** full watchlist search, ideas for the open slots (from requests, upcoming
   dates and the idea bank), drafts for the selected ones, reviewers notified.
-- **On the 7th:** run the monthly forecast check and create its draft.
+- **On the 7th:** prepare the forecast vs reality post and create its draft.
 
 The run belongs to the account of the person maintaining it. If that person leaves, any
 team member can recreate it from `docs/routine.md`. Nothing else depends on it: the
@@ -220,7 +225,7 @@ and scheduled by hand.
   reviews and approves; Buffer (free plan) schedules to all three channels. Direct
   platform APIs were rejected: X posting is pay-per-use since February 2026 and
   LinkedIn's page API requires an app review aimed at commercial use.
-- **2026-10-07 Monthly check method** as in section 5. It follows how C3S presents tercile
+- **2026-10-07 Forecast vs reality method** as in section 5. It follows how C3S presents tercile
   forecasts, is simple to explain, and runs unchanged every month.
 - **2026-10-07 Event figures use station records**, not gridded climatology at
   approximate coordinates: measured values, no coordinates needed, and record-breaking
@@ -229,5 +234,8 @@ and scheduled by hand.
 - **2026-10-07 Public repository.** Buffer takes images only from a permanent public
   address, so published images are stored here. The repository also documents the whole
   setup for the team. Drafts are never pushed; only published posts are archived.
+- **2026-10-08 Figure style.** Serif titles and numbers, off-white paper, logo in the
+  masthead and a smaller footer, to move away from a generic look. The monthly series is
+  called "Forecast vs reality", and its title asks whether the forecasts got the month right.
 - **2026-10-07 Notion text is final, two approvals.** What is in the Notion page at
   approval is published; both the PI and the person on rotation approve every post.

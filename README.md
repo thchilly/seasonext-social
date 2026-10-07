@@ -19,7 +19,7 @@ Channels: [LinkedIn](https://www.linkedin.com/showcase/seasonext/) ·
 | `docs/playbook.md` | How the channels are run: workflow, post categories, methods, rules |
 | `docs/routine.md` | The scheduled daily run that prepares and schedules posts |
 | `posts/` | Every published post: final text, image, sources, and the script that made the image |
-| `scripts/` | Figure style and reusable figure templates (monthly forecast check, paper card, station records) |
+| `scripts/` | Figure style and reusable figure templates (forecast vs reality, paper card, station records) |
 | `brand/` | SEASONEXT logo, emblem and font |
 | `profile/` | Profile images for the accounts |
 | `reference/` | Small reference datasets used by the figures |
@@ -39,7 +39,7 @@ as warnings.
 
 ```bash
 pip install -r requirements.txt
-python scripts/monthly_check.py 2026-09     # after scripts/fetch_monthly_check.py 2026-09
+python scripts/forecast_vs_reality.py 2026-09   # after scripts/fetch_forecast_vs_reality.py 2026-09
 python posts/<post>/figure.py               # event figures
 ```
 

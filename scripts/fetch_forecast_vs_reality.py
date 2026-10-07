@@ -1,4 +1,4 @@
-"""Download the data behind a "monthly check" post: forecast vs what happened in Crete.
+"""Download the data behind a "forecast vs reality" post for Crete.
 
 For a target month (e.g. 2026-09) this fetches:
 
@@ -15,9 +15,9 @@ Sources (CDS, CC BY 4.0):
 
 Usage
 -----
-    python fetch_monthly_check.py 2026-09
+    python fetch_forecast_vs_reality.py 2026-09
 
-Output (never committed): cache/monthly_check/, the shared ERA5
+Output (never committed): cache/forecast_vs_reality/, the shared ERA5
 reference file at the top level and the per-month files in <YYYY-MM>/.
 """
 
@@ -30,7 +30,7 @@ from pathlib import Path
 import cdsapi
 import xarray as xr
 
-DATA_DIR = Path(__file__).resolve().parents[1] / "cache" / "monthly_check"
+DATA_DIR = Path(__file__).resolve().parents[1] / "cache" / "forecast_vs_reality"
 
 # N, W, S, E. ERA5 box hugs the island; the 1 deg seasonal box takes the
 # surrounding grid points (lat 35-36 N, lon 23-27 E).
