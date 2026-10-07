@@ -48,7 +48,7 @@ two Super admins for this reason.
 
 | Step | Where | Who |
 |---|---|---|
-| Steering: priorities, upcoming events, notes | Notion, *Steering* page | anyone on the team |
+| Steering: focus, requests, dates, idea bank | Notion, *Steering* page | anyone on the team |
 | Ideas proposed | Notion, Posts database, status *Idea* | weekly scout run, or anyone |
 | Idea chosen | status *Selected* | person on rotation |
 | Draft written (text and figure) | Notion post page, status *In review* | person on rotation, with assistant support |
@@ -72,6 +72,12 @@ Rules that make this work:
 - **Publication time.** The planned date may include a time; without one, posts go out at
   10:00 Athens time.
 - **Reviewers are notified** by a comment mentioning them when a draft reaches *In review*.
+  The reviewers are the people listed at the top of the Steering page; Notion sends an
+  app notification and an email (each person's Notion settings must allow email
+  notifications).
+- **Requests.** Anyone can ask for a post or give context by adding a row to *Requests
+  and notes* on the Steering page. Urgent requests are handled the next morning, others
+  on Monday; the run answers in the same row.
 
 ## 4. Post categories
 
@@ -168,12 +174,16 @@ agrees best, following Papa and Koutroulis (2025).
 - **Writing.** Professional and neutral. Plain words; acronyms explained. No em dashes.
   LinkedIn about 1,200 to 1,600 characters; X and Bluesky under 280.
 
-## 9. Explainer backlog
+## 9. Idea bank
 
-Probabilistic forecasts and terciles; why seasonal forecasts work at all (ocean memory,
-ENSO); weather regimes; the NAO and Crete rainfall; what forecast skill means; why 1 km
-matters for a hydrological model; what HYPE does; reanalysis, stations and satellites;
-drought indices (SPI, SPEI); what a re-forecast (hindcast) is.
+Evergreen topics for explainers, data stories, series and team posts are kept in the
+*Idea bank* table on the Steering page (for example: probabilities and terciles, why
+seasonal forecasts work, re-forecasts, forecast skill, weather regimes as a textbook
+concept, stations versus reanalysis versus satellites, why 1 km matters, drought indices,
+Crete's rainfall gradient, Crete's reservoirs, a quarterly forecast scorecard, meet the
+team). Anyone can add; *Priority: Next* moves a topic up. Topics close to ongoing
+SEASONEXT research (such as weather regimes) stay at textbook level until the project's
+results are published.
 
 ## 10. Figure style
 
@@ -189,10 +199,11 @@ drought indices (SPI, SPEI); what a re-forecast (hindcast) is.
 One scheduled run per day at 08:00 Athens time, in the cloud (instructions in
 `docs/routine.md`):
 
-- **Every day:** schedule posts that have both approvals; archive them in `posts/`;
-  update Notion.
-- **Mondays:** read the *Steering* page, propose ideas for the open slots, draft the
-  selected ones, and notify reviewers.
+- **Every day:** read the state from Notion; schedule posts that have both approvals and
+  archive them in `posts/`; withdraw posts that lost an approval; handle urgent requests;
+  a brief check for major events and releases.
+- **Mondays:** full watchlist search, ideas for the open slots (from requests, upcoming
+  dates and the idea bank), drafts for the selected ones, reviewers notified.
 - **On the 7th:** run the monthly forecast check and create its draft.
 
 The run belongs to the account of the person maintaining it. If that person leaves, any

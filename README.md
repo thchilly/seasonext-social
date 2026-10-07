@@ -53,6 +53,17 @@ with the key in `~/.cdsapirc` or in the `CDSAPI_URL` and `CDSAPI_KEY` environmen
 - CLIMADAT-Grid: Varotsos et al. (2025), Earth System Science Data, CC BY 4.0.
 - Station observations: National Observatory of Athens, meteo.gr network.
 
+## Licence
+
+- **Code** (`scripts/`, figure scripts in `posts/`): MIT licence, see `LICENSE`.
+- **Posts, texts and figures** (`posts/`, `profile/`, `docs/`): Creative Commons
+  Attribution 4.0 International ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).
+  You may share and adapt them, including commercially, if you credit
+  "SEASONEXT project, Technical University of Crete" and indicate changes.
+- **Not covered:** the SEASONEXT logo and emblem (`brand/logo/`), which may only be used
+  to refer to the project; the Barlow font (`brand/fonts/`, SIL Open Font License); and
+  third-party data, which keep their own terms (see Data credits).
+
 ## Contact
 
 seasonext.tuc@gmail.com · Hydrology and Hydraulic Engineering Laboratory, Technical
