@@ -69,6 +69,8 @@ Rules that make this work:
   nothing else runs. To change an approved post, untick an approval: the next run takes
   it out of Buffer and returns it to *In review*.
 - **Approve by the evening before** the planned date (the daily run is at 08:00 Athens time).
+- **Publication time.** The planned date may include a time; without one, posts go out at
+  10:00 Athens time.
 - **Reviewers are notified** by a comment mentioning them when a draft reaches *In review*.
 
 ## 4. Post categories
