@@ -9,7 +9,7 @@ SEASONEXT develops seasonal forecasts of rainfall, river flow and drought, one t
 months ahead, for water managers in Crete.
 
 Channels: [LinkedIn](https://www.linkedin.com/showcase/seasonext/) ·
-[X](https://x.com/seasonext) · Bluesky (seasonext-tuc) ·
+[X](https://x.com/seasonext) · [Bluesky](https://bsky.app/profile/seasonext-tuc.bsky.social) ·
 [website](https://www.seasonext.tuc.gr/en/home)
 
 ## Contents

@@ -26,7 +26,7 @@ months 3 to 48):
 |---|---|
 | LinkedIn (main) | https://www.linkedin.com/showcase/seasonext/ |
 | X | https://x.com/seasonext |
-| Bluesky | seasonext-tuc |
+| Bluesky | https://bsky.app/profile/seasonext-tuc.bsky.social |
 | Website | https://www.seasonext.tuc.gr/en/home |
 | Project email | seasonext.tuc@gmail.com |
 
