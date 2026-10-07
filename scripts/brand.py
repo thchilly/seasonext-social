@@ -1,6 +1,6 @@
 """SEASONEXT look for social media figures: colours, fonts, canvas, header, footer.
 
-Every post figure is a 1080 x 1080 px square (works on LinkedIn, X and Bluesky
+Every post figure is a 1350 x 1350 px square (works on LinkedIn, X and Bluesky
 feeds) on warm off-white paper, laid out like a journal page:
 
 - a masthead: a navy rule, the series name on the left, the logo on the right;
@@ -41,8 +41,8 @@ PAPER = "#faf8f3"  # warm off-white
 SERIF = "Source Serif 4"
 SANS = "Barlow"
 
-SIZE_PX = 1080
-DPI = 216  # 5 x 5 inch canvas
+DPI = 270  # 5 x 5 inch canvas
+SIZE_PX = 5 * DPI  # 1350 px
 LEFT, RIGHT = 0.06, 0.94
 
 
@@ -85,13 +85,18 @@ def header(fig, series, title, subtitle=None, wrap=38, size=19, sub_wrap=80):
              va="top", fontfamily=SANS)
     if LOGO.exists():
         img = plt.imread(str(LOGO))
-        box = OffsetImage(img, zoom=0.16 * SIZE_PX / img.shape[1] / (DPI / 72))
+        # About 22 % of the canvas width, resampled smoothly.
+        box = OffsetImage(img, zoom=0.22 * SIZE_PX / img.shape[1] / (DPI / 72),
+                          interpolation="lanczos", resample=True)
         fig.add_artist(AnnotationBbox(box, (RIGHT, 0.943), xycoords="figure fraction",
                                       box_alignment=(1, 1), frameon=False))
 
     lines = textwrap.wrap(title, wrap)
-    t = fig.text(LEFT, 0.89, "\n".join(lines), color=NAVY, fontsize=size, fontweight="semibold",
+    t = fig.text(LEFT, 0.875, "\n".join(lines), color=NAVY, fontsize=size, fontweight="semibold",
                  va="top", fontfamily=SERIF, linespacing=1.0)
+    # Shrink the title a little if it runs past the right margin.
+    while _right(fig, t) > RIGHT and t.get_fontsize() > 15:
+        t.set_fontsize(t.get_fontsize() - 0.5)
     y = _bottom(fig, t) - 0.022
     if subtitle:
         subtitle = "\n".join(textwrap.wrap(subtitle, sub_wrap)) if "\n" not in subtitle else subtitle
@@ -101,6 +106,12 @@ def header(fig, series, title, subtitle=None, wrap=38, size=19, sub_wrap=80):
     return y
 
 
+def _right(fig, text):
+    """Figure-fraction x of the right edge of a text artist, as rendered."""
+    box = text.get_window_extent(renderer=fig.canvas.get_renderer())
+    return box.x1 / fig.bbox.width
+
+
 def _bottom(fig, text):
     """Figure-fraction y of the lowest point of a text artist, as rendered."""
     box = text.get_window_extent(renderer=fig.canvas.get_renderer())
@@ -108,9 +119,9 @@ def _bottom(fig, text):
 
 
 def footer(fig, credit):
-    """Hairline and data credits, set small (keep to two or three short lines)."""
-    fig.add_artist(plt.Line2D([LEFT, RIGHT], [0.078, 0.078], color=RULE, lw=0.8))
-    fig.text(LEFT, 0.066, credit, color=INK_3, fontsize=5.4, va="top", linespacing=1.15,
+    """Hairline and data credits across the full width, at most two lines."""
+    fig.add_artist(plt.Line2D([LEFT, RIGHT], [0.06, 0.06], color=RULE, lw=0.8))
+    fig.text(LEFT, 0.049, credit, color=INK_3, fontsize=5.4, va="top", linespacing=1.2,
              fontfamily=SANS)
 
 

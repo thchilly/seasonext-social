@@ -84,7 +84,7 @@ Rules that make this work:
 | Category | Purpose | When | Data | How it is made |
 |---|---|---|---|---|
 | Forecast vs reality | Show every month how the seasonal forecasts did for Crete | monthly, around the 10th | C3S seasonal forecasts (10 systems), ERA5 | `scripts/forecast_vs_reality.py`, fixed figure and text template (section 5) |
-| Explainer | One concept behind SEASONEXT in plain words | monthly | textbook knowledge, illustrative public data | topic from the backlog (section 9) |
+| Explainer (published as "Did you know?") | One concept behind SEASONEXT in plain words | monthly | textbook knowledge, illustrative public data | topic from the backlog (section 9) |
 | Event in context | Put a notable weather or water event in Crete or Greece into numbers | within a week of the event | NOA station totals and records, CLIMADAT-Grid, reservoir data | event figure against station records (section 6) |
 | World day | Join international observances | fixed dates (section 7) | varies | proposed 2 to 4 weeks ahead |
 | Field news | New systems, datasets and reports | when they appear | the release itself | short summary and what it means for Crete |
@@ -187,10 +187,10 @@ results are published.
 
 ## 10. Figure style
 
-- 1080 × 1080 px square on warm off-white paper, built on `scripts/brand.py`, laid out
+- 1350 × 1350 px square on warm off-white paper, built on `scripts/brand.py`, laid out
   like a journal page: a masthead (navy rule, series name, logo), a serif title that says
-  what the figure shows, a short subtitle, the content, and a compact footer with the
-  data credits.
+  what the figure shows (shrunk automatically if it would overflow), a short subtitle, the
+  content, and a footer with the data credits in at most two lines across the full width.
 - Typefaces: Source Serif 4 for titles, headings and headline numbers; Barlow (DIN-style,
   like the logo lettering) for labels, data and credits.
 - Colours: navy `#151d2c` and blue `#4d71b1` from the logo; terracotta `#c0703f` as the
@@ -235,7 +235,9 @@ and scheduled by hand.
   address, so published images are stored here. The repository also documents the whole
   setup for the team. Drafts are never pushed; only published posts are archived.
 - **2026-10-08 Figure style.** Serif titles and numbers, off-white paper, logo in the
-  masthead and a smaller footer, to move away from a generic look. The monthly series is
+  masthead and a two-line footer, 1350 px, to move away from a generic look. Explainers
+  carry the label "Did you know?" (lighter than "Explainer"); "Event in context" stays
+  neutral because these posts are often about disasters. The monthly series is
   called "Forecast vs reality", and its title asks whether the forecasts got the month right.
 - **2026-10-07 Notion text is final, two approvals.** What is in the Notion page at
   approval is published; both the PI and the person on rotation approve every post.

@@ -202,7 +202,7 @@ def verdict(key, s):
     margin = 0.1 * (o["hi"] - o["lo"])
     for edge, a, b in ((o["lo"], 0, 1), (o["hi"], 1, 2)):
         if abs(o["value"] - edge) < margin:
-            return head + f" It came in right on the line between {words[a]} and {words[b]}."
+            return head + f" It came in on the line between {words[a]} and {words[b]}."
     return head + f" It was {words[o['category']]}."
 
 
@@ -245,7 +245,7 @@ def render(year, month, summary, out):
         ("t2m", "Temperature", "°C", lambda v: f"{v:.1f}"),
     ]
     for i, (key, title, unit, fmt) in enumerate(specs):
-        bt = top - 0.02 - i * 0.30
+        bt = top - 0.025 - i * 0.32
         fig.text(0.06, bt, title, fontsize=13, fontweight="semibold", color=brand.NAVY,
                  fontfamily=brand.SERIF, va="top")
         fig.text(0.06, bt - 0.05, verdict(key, summary[key]), fontsize=8.5, color=brand.INK_2,
@@ -255,9 +255,8 @@ def render(year, month, summary, out):
     n = summary["pr"]["n_systems"]
     brand.footer(
         fig,
-        f"Forecast: average of {n} C3S seasonal systems started 1 {prev} {year}.\n"
-        f"Observed: ERA5, Crete land points. Thirds from 1993-2016.\n"
-        f"Contains modified Copernicus Climate Change Service information {year}.",
+        f"Forecast: mean of {n} C3S seasonal systems started 1 {prev} {year}. Observed: ERA5, Crete land points. "
+        f"Thirds from 1993-2016.\nContains modified Copernicus Climate Change Service information {year}.",
     )
     return brand.save(fig, out)
 
