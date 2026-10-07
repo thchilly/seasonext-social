@@ -68,9 +68,16 @@ Rules that make this work:
   post in Buffer for its planned date and time. Once in Buffer, it publishes even if
   nothing else runs. To change an approved post, untick an approval: the next run takes
   it out of Buffer and returns it to *In review*.
+- **Review window of at least two working days.** A draft reaches *In review* at least two
+  full working days before its planned date. The weekly rhythm: drafts on Monday, review
+  on Tuesday and Wednesday, publication on Thursday. Urgent event posts may use a shorter
+  window if both reviewers agree.
 - **Approve by the evening before** the planned date (the daily run is at 08:00 Athens time).
-- **Publication time.** The planned date may include a time; without one, posts go out at
-  10:00 Athens time.
+  A post that is not approved by then moves to the next Tuesday or Thursday, and the
+  reviewers are told.
+- **Publication time.** All three channels at the same time, 10:00 Athens time, on Tuesday,
+  Wednesday or Thursday (when LinkedIn engagement is highest). A planned date may set a
+  different time.
 - **Reviewers are notified** by a comment mentioning them when a draft reaches *In review*.
   The reviewers are the people listed at the top of the Steering page; Notion sends an
   app notification and an email (each person's Notion settings must allow email

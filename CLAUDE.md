@@ -27,6 +27,8 @@ it is the source of truth for workflow, categories, methods and rules.
 - May: propose ideas, write drafts, make figures, create and update Notion post pages,
   mention reviewers in comments, schedule posts in Buffer **only after both approvals**,
   archive published posts, fill metrics.
+- Timing: at least two full working days between *In review* and the planned date;
+  all channels at the same time, default 10:00 Athens, Tuesday to Thursday.
 - Never: publish immediately (`shareNow`), schedule a post missing an approval, change
   an approved text, post unpublished project results, or present a forecast as a warning.
 - The Notion page text at approval is final. Copy it verbatim to Buffer and to
