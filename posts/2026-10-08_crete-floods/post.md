@@ -1,8 +1,8 @@
 # Crete floods in context (30 Sep to 4 Oct 2026)
 
 - Category: Event in context
-- Published: Fri 2026-10-09, 10:00 Athens time, on LinkedIn, X and Bluesky
-- Language: EN, with the Greek version as first comment on LinkedIn
+- Published: Thu 2026-10-08, 14:00 Athens time, on LinkedIn, X and Bluesky
+- Language: EN; LinkedIn also in Greek; the lab's LinkedIn page is tagged
 - Image: image.png (made with figure.py)
 - Approved by: PI and researcher on rotation
 
@@ -20,11 +20,12 @@ What forecasts can and cannot do: no seasonal forecast can predict a single stor
 
 Data: NOA / meteo.gr station network (event totals preliminary; station records 2006-2025). Map: CLIMADAT-Grid, Varotsos et al. (2025), Earth System Science Data.
 
-#Crete #Floods #WaterExtremes #SeasonalForecasting #Hydrology
+SEASONEXT is led by Hydromech, the Hydrology and Hydraulic Engineering Laboratory, TUC.
 
-## LinkedIn first comment (Greek)
-
+Στα ελληνικά:
 Κρήτη, 30 Σεπτεμβρίου έως 4 Οκτωβρίου: πάνω από 840 mm στο Ξυλόσκαλο (Σαμαριά), πάνω από 640 mm στα Ανώγεια και 448 mm στο Τζερμιάδο (σταθμοί ΕΑΑ/meteo.gr). Σε πέντε μέρες έπεσε το 45% έως 65% της βροχής ενός μέσου έτους, και σε Σαμαριά και Ανώγεια περισσότερη βροχή από οποιονδήποτε μήνα από το έτος έναρξης λειτουργίας των σταθμών (2008). Τα εποχικά προγνωστικά δεν μπορούν να προβλέψουν μια μεμονωμένη καταιγίδα, μπορούν όμως να δείξουν αν οι επόμενοι μήνες θα είναι πιο υγροί ή πιο ξηροί από το κανονικό. Αυτό είναι ένα από τα αντικείμενα του SEASONEXT.
+
+#Crete #Floods #WaterExtremes #SeasonalForecasting #Hydrology
 
 ## X and Bluesky
 
