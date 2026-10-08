@@ -48,7 +48,7 @@ it is the source of truth for workflow, categories, methods and rules.
 - `drafts/` and `cache/` are local and never committed. Only published posts go into `posts/`.
 - Python: `requirements.txt`. Copernicus key from `~/.cdsapirc` or `CDSAPI_URL` / `CDSAPI_KEY`;
   never commit keys.
-- Figures: `scripts/brand.py` style, 1080 × 1080 px; check every rendered image by eye.
+- Figures: `scripts/brand.py` style, 1350 × 1350 px; check every rendered image by eye.
 
 ## Scheduled run
 
