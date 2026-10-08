@@ -61,12 +61,23 @@ two Super admins for this reason.
 Rules that make this work:
 
 - **The Notion page is the final text.** From *In review* on, whatever is in the post page
-  is what gets published: LinkedIn text, X/Bluesky text, Greek first comment, alt text,
-  image. Edits are made there.
+  is what gets published: LinkedIn text (English and Greek), X/Bluesky text, alt text,
+  image. Edits are made there, also after scheduling: the next daily run brings Buffer in
+  line with them.
+- **Ticking the two approvals is the only manual step.** Status, dates, Buffer IDs and the
+  archive are kept up to date by the daily run; nobody needs to change them by hand.
+- **Proofreading.** The daily run proofreads every post in review or scheduled whose text
+  changed (English and Greek spelling, grammar and accents; numbers that agree across the
+  versions, the alt text and the sources; length limits). Obvious typos are fixed directly
+  in the Notion page, and a comment lists each fix. Anything that would change the
+  meaning (a number, a name, a claim, a rewritten sentence) is never changed by the run:
+  it leaves a comment with the suggested fix and mentions the reviewers. An approved post
+  with such an issue waits until a reviewer fixes it (or replies that it is fine) and is
+  then scheduled by the next run, on its planned date if that is still ahead.
 - **Both approvals are needed.** A post with one tick does not move.
 - **Scheduled as soon as approved.** After both ticks, the next daily run schedules the
   post in Buffer for its planned date and time. Once in Buffer, it publishes even if
-  nothing else runs. To change an approved post, untick an approval: the next run takes
+  nothing else runs. To stop an approved post, untick an approval: the next run takes
   it out of Buffer and returns it to *In review*.
 - **Review window of at least two working days.** A draft reaches *In review* at least two
   full working days before its planned date. The weekly rhythm: drafts on Monday, review
@@ -175,11 +186,19 @@ agrees best, following Papa and Koutroulis (2025).
 - **Credits on every figure.** Copernicus data: "Contains modified Copernicus Climate
   Change Service information [year]". Other data: source and licence.
 - **Respectful tone** around casualties and damage.
-- **Language.** English first; Crete-specific posts also get a short Greek version (first
-  comment on LinkedIn, and on the website).
+- **Language.** English first. On LinkedIn, almost every post also carries a Greek version
+  in the same post, below the English (a first comment would need a paid Buffer plan).
+  Reviewers may drop the Greek where it adds nothing. X and Bluesky are English only.
+- **LinkedIn layout.** The LinkedIn section of the Notion page holds the whole post, in
+  this order: the English text; the data credits line; the line "SEASONEXT is led by
+  Hydromech, the Hydrology and Hydraulic Engineering Laboratory, TUC.", in which the
+  lab's LinkedIn page is tagged; then "Στα ελληνικά:" and the Greek text; the hashtags
+  last. A LinkedIn tag only works on the page's exact name, so the words "Hydrology and
+  Hydraulic Engineering Laboratory, TUC" are never reworded.
 - **Accessibility.** Every image has alt text.
 - **Writing.** Professional and neutral. Plain words; acronyms explained. No em dashes.
-  LinkedIn about 1,200 to 1,600 characters; X and Bluesky under 280.
+  LinkedIn: English about 1,200 to 1,800 characters, Greek up to about 800, at most 3,000
+  in total (LinkedIn's limit). X and Bluesky under 280.
 
 ## 9. Idea bank
 
@@ -211,9 +230,10 @@ results are published.
 One scheduled run per day at 08:00 Athens time, in the cloud (instructions in
 `docs/routine.md`):
 
-- **Every day:** read the state from Notion; schedule posts that have both approvals and
-  archive them in `posts/`; withdraw posts that lost an approval; handle urgent requests;
-  a brief check for major events and releases.
+- **Every day:** read the state from Notion; proofread changed posts and fix obvious
+  typos; schedule posts that have both approvals and archive them in `posts/`; bring
+  Buffer in line with later edits; withdraw posts that lost an approval; handle urgent
+  requests; a brief check for major events and releases.
 - **Mondays:** full watchlist search, ideas for the open slots (from requests, upcoming
   dates and the idea bank), drafts for the selected ones, reviewers notified.
 - **On the 7th:** prepare the forecast vs reality post and create its draft.
@@ -248,3 +268,8 @@ and scheduled by hand.
   called "Forecast vs reality", and its title asks whether the forecasts got the month right.
 - **2026-10-07 Notion text is final, two approvals.** What is in the Notion page at
   approval is published; both the PI and the person on rotation approve every post.
+- **2026-10-08 Greek on LinkedIn, lab tagged, proofreading.** At the PI's request,
+  LinkedIn posts carry a Greek version and tag the lab's LinkedIn page. The Greek goes
+  inside the post because first comments need a paid Buffer plan. The daily run fixes
+  obvious typos itself and flags anything that would change the meaning, so the team can
+  edit directly in Notion; ticking the two approvals is the only manual step.

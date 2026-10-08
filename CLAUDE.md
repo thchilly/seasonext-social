@@ -17,7 +17,14 @@ it is the source of truth for workflow, categories, methods and rules.
 - **Buffer** (scheduling). Organization `6ac630a1a3d4f2aacdf0a02f`; channels: LinkedIn
   page `6ac635826a5c39ccb63f83d9`, X `6ac631026a5c39ccb63f4fc2`, Bluesky
   `6ac631586a5c39ccb63f51e1`. Timezone Europe/Athens. Free plan: 10 scheduled posts per
-  channel.
+  channel. The free plan has no LinkedIn first comment.
+- **Lab tag on LinkedIn.** Every LinkedIn post tags the lab's page on its exact name
+  "Hydrology and Hydraulic Engineering Laboratory, TUC": organization `103194041`
+  (`urn:li:organization:103194041`), vanity name
+  `hydrology-and-hydraulic-engineering-laboratory-tuc`, link
+  https://www.linkedin.com/company/hydrology-and-hydraulic-engineering-laboratory-tuc/.
+  In Buffer: `metadata.linkedin.annotations`, with the start and length of the name in
+  the text.
 - **Images for Buffer** must have a permanent public URL. Commit the image to
   `posts/<date>_<slug>/image.png`, push, then use
   `https://raw.githubusercontent.com/thchilly/seasonext-social/main/posts/<date>_<slug>/image.png`.
@@ -30,9 +37,11 @@ it is the source of truth for workflow, categories, methods and rules.
 - Timing: at least two full working days between *In review* and the planned date;
   all channels at the same time, default 10:00 Athens, Tuesday to Thursday.
 - Never: publish immediately (`shareNow`), schedule a post missing an approval, change
-  an approved text, post unpublished project results, or present a forecast as a warning.
-- The Notion page text at approval is final. Copy it verbatim to Buffer and to
-  `posts/<date>_<slug>/post.md`.
+  the meaning of a text written by the team, post unpublished project results, or present
+  a forecast as a warning. Obvious typos are fixed and listed in a comment (playbook
+  section 3).
+- The Notion page text is final. Copy it verbatim to Buffer and to
+  `posts/<date>_<slug>/post.md`; later edits in Notion are carried over to Buffer.
 
 ## Writing
 
