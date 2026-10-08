@@ -10,6 +10,9 @@ text below as its instructions.
 Rules from `CLAUDE.md` and `docs/playbook.md` apply throughout. The run never publishes
 immediately and never schedules a post without both approvals.
 
+Run scripts with `python3`: in the cloud environment, `python` is a different interpreter
+without the project packages.
+
 ## Principle: Notion is the state
 
 Every decision is read from Notion at the start of each run; nothing is remembered
@@ -73,7 +76,7 @@ images and the archive.
 ## On the 7th of each month
 
 12. **Forecast vs reality** for the previous month: run
-    `python scripts/fetch_forecast_vs_reality.py YYYY-MM` and `python scripts/forecast_vs_reality.py YYYY-MM`,
+    `python3 scripts/fetch_forecast_vs_reality.py YYYY-MM` and `python3 scripts/forecast_vs_reality.py YYYY-MM`,
     write the text from the template of the previous post in the series, create the draft
     (status *In review*, planned for the first Tuesday to Thursday at least two working
     days later) and notify the reviewers.
