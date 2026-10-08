@@ -192,7 +192,7 @@ agrees best, following Papa and Koutroulis (2025).
 - **LinkedIn layout.** The LinkedIn section of the Notion page holds the whole post, in
   this order: the English text; the data credits line; the line "SEASONEXT is led by
   Hydromech, the Hydrology and Hydraulic Engineering Laboratory, TUC.", in which the
-  lab's LinkedIn page is tagged; then "Στα ελληνικά:" and the Greek text; the hashtags
+  lab's LinkedIn page is tagged; then the Greek text, with no heading; the hashtags
   last. A LinkedIn tag only works on the page's exact name, so the words "Hydrology and
   Hydraulic Engineering Laboratory, TUC" are never reworded.
 - **Accessibility.** Every image has alt text.
