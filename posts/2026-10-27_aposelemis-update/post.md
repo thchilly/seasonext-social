@@ -1,7 +1,7 @@
 # Aposelemis after the storm (photo version, update)
 
 - Category: Event in context
-- Planned: Tue 2026-10-27, 12:00 Athens time, on LinkedIn, X and Bluesky
+- Planned: Tue 2026-10-27, 11:25 Athens time, on LinkedIn, X and Bluesky
 - Replaces the post of the same morning (2026-10-27_aposelemis-after-storm), deleted from the channels after one hour
 - Language: EN; LinkedIn also in Greek; the lab's LinkedIn page is tagged
 - Image: image.png (made with figure.py; the photo itself is not stored here)
